@@ -1,0 +1,355 @@
+:root {
+  --primary-dark: #001B48;
+  --secondary: #02457A;
+  --accent: #018ABE;
+  --light: #97CADB;
+  --lightest: #D6E8EE;
+  --white: #ffffff;
+  --shadow: rgba(0, 27, 72, 0.1);
+  --transition: all 0.3s ease;
+  --error: #e74c3c;
+  --success: #2ecc71;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, var(--lightest) 0%, var(--white) 100%);
+  min-height: 100vh;
+  color: var(--primary-dark);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: var(--primary-dark);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-transform: none;
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.subtitle {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.upload-section {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  margin: 2rem auto;
+  max-width: 800px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.upload-section.drag-active {
+  border: 2px dashed var(--accent);
+  background: var(--lightest);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 2rem;
+  border: 2px dashed var(--light);
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.file-input-label:hover {
+  border-color: var(--accent);
+  background: var(--lightest);
+}
+
+.upload-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.upload-hint {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.preview-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.change-image-btn {
+  background: var(--lightest);
+  color: var(--secondary);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.change-image-btn:hover {
+  background: var(--light);
+  color: var(--primary-dark);
+}
+
+.analyze-button {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.analyze-button:hover:not(:disabled) {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.analyze-button:disabled {
+  background: var(--light);
+  cursor: not-allowed;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--white);
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.status-section {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.status-section h2 {
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.results {
+  text-align: left;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.error-icon {
+  font-size: 1.5rem;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  color: var(--success);
+  font-size: 1.5rem;
+}
+
+.prediction-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.prediction-card {
+  background: var(--lightest);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.prediction-card h3 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.prediction-value {
+  color: var(--primary-dark);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.all-probabilities {
+  background: var(--lightest);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-top: 2rem;
+}
+
+.all-probabilities h3 {
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.probability-bar {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.probability-label {
+  width: 150px;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.probability-value {
+  flex: 1;
+  height: 30px;
+  background: var(--white);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.probability-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 15px;
+  transition: width 1s ease-out;
+}
+
+.probability-value span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-dark);
+  font-weight: 500;
+  font-size: 0.9rem;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .upload-section,
+  .status-section {
+    padding: 1.5rem;
+  }
+  
+  .probability-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .probability-label {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .change-image-btn,
+  .analyze-button {
+    width: 100%;
+  }
+} 
