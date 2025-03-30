@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/graduation/static/css/main.2b0933a7.css",
+    "main.js": "/graduation/static/js/main.f7cfe769.js",
+    "index.html": "/graduation/index.html",
+    "main.2b0933a7.css.map": "/graduation/static/css/main.2b0933a7.css.map",
+    "main.f7cfe769.js.map": "/graduation/static/js/main.f7cfe769.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b0933a7.css",
+    "static/js/main.f7cfe769.js"
+  ]
+}
