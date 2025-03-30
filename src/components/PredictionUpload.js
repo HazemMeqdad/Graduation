@@ -31,7 +31,7 @@ const PredictionUpload = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('http://158.220.104.116:7894/predict', {
+            const response = await fetch('https://grad.hazemmeqdad.com/predict', {
                 method: 'POST',
                 body: formData,
             });

@@ -47,7 +47,7 @@ function App() {
       const fileInput = document.querySelector('input[type="file"]');
       formData.append('file', fileInput.files[0]);
 
-      const response = await fetch('http://158.220.104.116:7894/predict', {
+      const response = await fetch('https://grad.hazemmeqdad.com/predict', {
         method: 'POST',
         body: formData,
       });
